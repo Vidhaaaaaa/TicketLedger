@@ -1,4 +1,4 @@
-module TicketNFT {
+module myModule::TicketNFT {
     use aptos_framework::token::{self, TokenData, TokenId};
 
     public entry fun mint_ticket(

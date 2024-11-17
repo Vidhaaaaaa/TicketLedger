@@ -5,8 +5,8 @@ import { InputTransactionData, useWallet } from "@aptos-labs/wallet-adapter-reac
 import { useState } from "react";
 import { Aptos, AptosConfig, Network } from "@aptos-labs/ts-sdk";
 
-const moduleAddress = "0x610ea90387f24c61fa507060dfb272a901ef420411473ab344cc45d72904e3bb";
-const moduleName = "TicketNFT";
+const moduleName = process.env.REACT_APP_MODULE_NAME;
+const moduleAddress = process.env.REACT_APP_MODULE_ADDRESS;
 
 const aptosConfig = new AptosConfig({ network: Network.TESTNET });
 const client = new Aptos(aptosConfig);
