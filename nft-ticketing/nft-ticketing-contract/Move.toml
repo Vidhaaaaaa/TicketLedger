@@ -1,0 +1,16 @@
+[package]
+name = "nft-ticketing"
+version = "1.0.0"
+authors = []
+
+[addresses]
+TicketNFT = '0x6de994fec43fbb64b244f8e88e460576ab28239724d31d51cbfad8eb97271756'
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]

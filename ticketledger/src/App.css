@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: #fff;
+  text-align: center;
+}
+
+.auth-container,
+header,
+.events,
+main {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 500px;
+  background: #1f2937;
+  border-radius: 10px;
+}
+
+button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #d32f2f;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
