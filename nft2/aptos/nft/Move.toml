@@ -3,7 +3,7 @@ name = "TicketNFT"
 version = "0.1.0"
 
 [addresses]
-moduleAddress = '0xf735cfb43c8ee0ed33561f149b21e9aa44d7148e97d1a3ee4df2b66f3dbd04f3'
+moduleAddress = '0x6de994fec43fbb64b244f8e88e460576ab28239724d31d51cbfad8eb97271756'
 
 [dependencies]
 AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-framework", rev = "main" }
