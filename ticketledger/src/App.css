@@ -31,3 +31,8 @@ button {
 button:hover {
   background-color: #d32f2f;
 }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
