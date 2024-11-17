@@ -5,9 +5,8 @@ import { InputTransactionData, useWallet } from "@aptos-labs/wallet-adapter-reac
 import { useState } from "react";
 import { Aptos, AptosConfig, Network } from "@aptos-labs/ts-sdk";
 
-// Safely access the environment variable
-const moduleAddress = process.env.REACT_APP_MODULE_ADDRESS || "fallback_address"; // Replace with a default value
-const moduleName = "TicketNFT"; // Assuming the contract's module name is TicketNFT
+const moduleAddress = process.env.REACT_APP_MODULE_ADDRESS;
+const moduleName = process.env.REACT_APP_MODULE_NAME;
 
 const aptosConfig = new AptosConfig({ network: Network.TESTNET });
 const client = new Aptos(aptosConfig);
@@ -25,32 +24,76 @@ const App = () => {
     setLoading(true);
 
     try {
-      // Preparing transaction payload
       const payload: InputTransactionData = {
-        type: "entry_function_payload",
-        function: `${moduleAddress}::${moduleName}::mint_ticket`,
-        type_arguments: [],
-        arguments: ["1"], // Example argument
+        data: {
+          function: `${moduleAddress}::${moduleName}::mint_ticket`,
+          functionArguments: [
+            "HotPause Concert", // Collection name
+            "HotPause Ticket #1", // NFT Name
+            "Exclusive concert ticket", // Description
+            "https://example.com/nft-image.png" // Metadata URI
+          ],
+        },
       };
 
-      const response = await signAndSubmitTransaction(payload);
-      console.log("Transaction successful:", response);
-      alert("Transaction completed!");
+      const tx = await signAndSubmitTransaction({ payload });
+      console.log("Transaction submitted:", tx);
+
+      await client.getTransactionByHash(tx.hash); // Wait for confirmation
+      alert("NFT Minted Successfully!");
     } catch (err) {
-      console.error("Transaction failed:", err);
-      alert("Transaction failed. Check console for details.");
+      console.error("Minting failed:", err);
+      alert("Failed to mint the ticket. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  if (!connected) {
+    return (
+      <div className="app-container">
+        <header>
+          <h1>TicketLedger</h1>
+          <p>Your gateway to exclusive events</p>
+          <p>Please connect your wallet to continue</p>
+        </header>
+        <div className="wallet-selector">
+          <WalletSelector />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <WalletSelector />
-      <h1>Mint Your Ticket NFT</h1>
-      <button onClick={handleMintTicket} disabled={loading}>
-        {loading ? "Minting..." : "Mint Ticket"}
-      </button>
+    <div className="app-container">
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-message">Processing your transaction...</div>
+        </div>
+      )}
+
+      <header>
+        <h1>TicketLedger</h1>
+        <p>Your gateway to exclusive events</p>
+      </header>
+
+      <main>
+        <section className="events">
+          <div className="event">
+            <h2>HotPause Concert</h2>
+            <p>16th December 2024</p>
+            <button onClick={handleMintTicket}>Book Now</button>
+          </div>
+          <div className="event">
+            <h2>Blockchain Expo</h2>
+            <p>Coming Soon...</p>
+          </div>
+          <div className="event">
+            <h2>India Blockchain Week 2024</h2>
+            <p>Coming Soon...</p>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };
