@@ -36,3 +36,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.loading-message {
+  font-family: "Courier New";
+  font-size: 100px;
+  margin: 30px 30px 30px 30px;
+  color: white;
+}
