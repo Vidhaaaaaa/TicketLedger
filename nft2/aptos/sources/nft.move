@@ -1,7 +1,6 @@
 module moduleAddress::TicketNFT {
     use std::string;
 
-    // Define the Ticket struct
     struct Ticket has store, key, drop {
         id: u64,
         name: string::String,
@@ -9,7 +8,6 @@ module moduleAddress::TicketNFT {
         image_url: string::String,
     }
 
-    // Struct for returning ticket data
     struct TicketInfo has drop {
         id: u64,
         name: string::String,
@@ -17,7 +15,6 @@ module moduleAddress::TicketNFT {
         image_url: string::String,
     }
 
-    // Mint a ticket
     public entry fun mint_ticket(
         account: &signer,
         id: u64,
@@ -32,11 +29,9 @@ module moduleAddress::TicketNFT {
             image_url,
         };
 
-        // Move the ticket resource to the owner's account
         move_to(account, ticket);
     }
 
-    // Get ticket information
     public fun get_ticket(account: address): TicketInfo acquires Ticket {
         let ticket = borrow_global<Ticket>(account);
         TicketInfo {

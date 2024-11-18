@@ -36,7 +36,7 @@ const App = () => {
         },
       };
 
-      const tx = await signAndSubmitTransaction({ payload });
+      const tx = await signAndSubmitTransaction(payload);
       console.log("Transaction submitted:", tx);
 
       await client.getTransactionByHash(tx.hash); // Wait for confirmation
