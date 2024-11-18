@@ -1,0 +1,4 @@
+# Ignore Build
+build/
+# Ignore aptos files
+.aptos/
