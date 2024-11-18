@@ -1,4 +1,4 @@
-module 0x624ebfa1df2b252f89311e536dc783292446abfa0dd2c12512c3101ec733c39e::TicketNFT {
+module moduleAddress::TicketNFT {
     use std::string;
 
     // Define the Ticket struct
