@@ -35,10 +35,10 @@ module moduleAddress::TicketNFT {
     public fun get_ticket(account: address): TicketInfo acquires Ticket {
         let ticket = borrow_global<Ticket>(account);
         TicketInfo {
-            id: ticket.id,
-            name: ticket.name,
-            description: ticket.description,
-            image_url: ticket.image_url,
+            id: 123,
+            name: hotpause,
+            description: concert,
+            image_url: image.daal.denge,
         }
     }
 }
